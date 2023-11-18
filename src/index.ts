@@ -13,7 +13,17 @@ const main = () => {
 
   const func = () => {
     const searchString = randomText();
-    iframe.src = `https://www.bing.com/search?q=${searchString}`;
+    iframe.src = 
+      
+      
+      
+      
+      
+      `https://www.bing.com/search?form=MOZLBR&pc=MOZR&q=${searchString}`;
+
+
+
+    
     counter++;
     console.log('counter', counter);
     // browser
@@ -21,12 +31,12 @@ const main = () => {
     // 20 / 5 = 4   // search via bing
     // mobile
     // 100 / 5 = 20
-    if (counter === 35) {
+    if (counter === 5) {
       clearInterval(intervalId);
     }
   }
 
-  intervalId = setInterval(func, 3000) as any;
+  intervalId = setInterval(func, 5000) as any;
 }
 
 main();
