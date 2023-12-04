@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Number Generator</title>
     <style>
+        
+  
         body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(to right, #3494e6, #ec6ead);
@@ -48,59 +51,100 @@
             margin-top: 20px;
         }
 
-        #bingFrame {
+        .frame-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .frame {
             width: 100%;
             height: 300px;
             border: none;
         }
+  
+  
+  
+  
+  
+  
     </style>
 </head>
+
 <body>
 
-<button onclick="openLink('https://rewards.bing.com')">REWARDS</button>
-<button onclick="openLink('https://rewards.bing.com/status')">STATUS</button>
-<input type="number" id="intervalInput" placeholder=" 1 sec">
-<button onclick="toggleLoop()" id="toggleButton">Stop</button>
+    <button onclick="openLink('https://rewards.bing.com')">REWARDS</button>
+    <button onclick="openLink('https://rewards.bing.com/status')">STATUS</button>
+    <button onclick="openLinkSameWindow('https://abhishekkumar25122512.github.io/bing-rewards25122005abhi/')">Re-Start</button>
 
-<p id="randomNumber"></p>
+   
+    <button onclick="toggleLoop()" id="toggleButton">Stop</button>
 
-<iframe id="bingFrame"></iframe>
+    <p id="randomNumber"></p>
 
-<script>
-    var intervalId;
-    var isLooping = true;
+    <div class="frame-container">
+        <iframe id="bingFrame" class="frame"></iframe>
+    </div>
 
-    function generateRandomNumber() {
-        var randomNumber = Math.floor(Math.random() * 10008000) + 1;
-        document.getElementById('randomNumber').innerText = 'Random Number: ' + randomNumber;
-        document.getElementById('bingFrame').src = 'https://www.bing.com/search?form=MOZLBR&pc=MOZR&q=' + encodeURIComponent(randomNumber);
-    }
+    <script>
+        var intervalId;
+        var isLooping = true;
+        var searchCounter = 0;
+        var maxSearches = 21;
 
-    function openLink(link) {
-        window.open(link, '_blank');
-    }
+        function generateRandomNumber() {
+            if (searchCounter < maxSearches) {
+                var randomNumber = Math.floor(Math.random() * 10008000) + 1;
+                document.getElementById('randomNumber').innerText = 'Random Number: ' + randomNumber;
 
-    function toggleLoop() {
-        var toggleButton = document.getElementById('toggleButton');
-        var intervalInput = document.getElementById('intervalInput');
-        if (isLooping) {
-            clearInterval(intervalId);
-            toggleButton.innerText = 'Start';
-            toggleButton.style.background = 'linear-gradient(to right, #32cd32, #008000)';
-            intervalInput.disabled = false; // Enable the input box
-        } else {
-            var intervalValue = parseInt(intervalInput.value, 10);
-            intervalId = setInterval(generateRandomNumber, intervalValue * 1000);
-            toggleButton.innerText = 'Stop';
-            toggleButton.style.background = 'linear-gradient(to right, #ff6347, #ff4500)';
-            intervalInput.disabled = true; // Disable the input box while looping
+                document.getElementById('bingFrame').src = "https://www.bing.com/search?q=" + encodeURIComponent(randomNumber) + "&qs=n&form=QBRE&sp=-1&lq=1&pq=dwadawbnbwacccwadaa&sc=0-19&sk=&cvid=D8949155E22D4611BA00FA1AB65BBF4B&ghsh=0&ghacc=0&ghpl=";
+
+                searchCounter++;
+            } else {
+                clearInterval(intervalId);
+                toggleLoop(); // Update button text and styling
+            }
         }
-        isLooping = !isLooping;
-    }
 
-    intervalId = setInterval(generateRandomNumber, 1000);
-    generateRandomNumber();
-</script>
+        function openLink(link) {
+            window.open(link, '_blank');
+        }
+
+        function openLinkSameWindow(link) {
+            window.location.href = link;
+        }
+
+        function toggleLoop() {
+            var toggleButton = document.getElementById('toggleButton');
+            var intervalInput = document.getElementById('intervalInput');
+            if (isLooping) {
+                clearInterval(intervalId);
+                toggleButton.innerText = 'Start';
+                toggleButton.style.background = 'linear-gradient(to right, #32cd32, #008000)';
+                intervalInput.disabled = false; // Enable the input box
+            } else {
+                var intervalValue = parseInt(intervalInput.value, 10);
+                intervalId = setInterval(generateRandomNumber, 7000);
+                toggleButton.innerText = 'Stop';
+                toggleButton.style.background = 'linear-gradient(to right, #ff6347, #ff4500)';
+                intervalInput.disabled = true; // Disable the input box while looping
+            }
+            isLooping = !isLooping;
+        }
+
+        intervalId = setInterval(generateRandomNumber, 7000);
+        generateRandomNumber();
+    </script>
 
 </body>
+
 </html>
+
+
+
+
+
+
+
+
+
+
