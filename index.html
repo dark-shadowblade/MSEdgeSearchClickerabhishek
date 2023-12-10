@@ -7,14 +7,13 @@
     <title>Random Number Generator</title>
     <style>
         
-  
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #3494e6, #ec6ead);
-            text-align: center;
-            margin: 20px;
-            color: #ffffff;
-        }
+body {
+    font-family: 'Arial', sans-serif;
+    background: url(https://unsplash.it/801) center/cover;
+    text-align: center;
+    margin: 20px;
+    color: #ffffff;
+}
 
         button {
             background: linear-gradient(to right, #ff8c00, #ffd700);
@@ -61,26 +60,28 @@
             height: 300px;
             border: none;
         }
-  
-  
-  
-  
-  
-  
+
+        #searchCircle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            color: #3494e6;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+        }
     </style>
 </head>
 
 <body>
-
     <button onclick="openLink('https://rewards.bing.com')">REWARDS</button>
     <button onclick="openLink('https://rewards.bing.com/status')">STATUS</button>
-    <button onclick="openLinkSameWindow('https://dark-shadowblade.github.io/MSEdgeSearchClickerabhishek/
-  ')">Re-Start</button>
+    <button onclick="openLinkSameWindow('https://dark-shadowblade.github.io/MSEdgeSearchClickerabhishek/')">Re-Start</button>
 
-   
-    <button onclick="toggleLoop()" id="toggleButton">Stop</button>
-
-    <p id="randomNumber"></p>
+    <div id="searchCircle">0</div>
 
     <div class="frame-container">
         <iframe id="bingFrame" class="frame"></iframe>
@@ -95,11 +96,11 @@
         function generateRandomNumber() {
             if (searchCounter < maxSearches) {
                 var randomNumber = Math.floor(Math.random() * 10008000) + 1;
-                document.getElementById('randomNumber').innerText = 'Random Number: ' + randomNumber;
 
                 document.getElementById('bingFrame').src = "https://www.bing.com/search?q=" + encodeURIComponent(randomNumber) + "&qs=n&form=QBRE&sp=-1&lq=1&pq=dwadawbnbwacccwadaa&sc=0-19&sk=&cvid=D8949155E22D4611BA00FA1AB65BBF4B&ghsh=0&ghacc=0&ghpl=";
 
                 searchCounter++;
+                document.getElementById('searchCircle').innerText = searchCounter;
             } else {
                 clearInterval(intervalId);
                 toggleLoop(); // Update button text and styling
@@ -114,38 +115,16 @@
             window.location.href = link;
         }
 
-        function toggleLoop() {
-            var toggleButton = document.getElementById('toggleButton');
-            var intervalInput = document.getElementById('intervalInput');
-            if (isLooping) {
-                clearInterval(intervalId);
-                toggleButton.innerText = 'Start';
-                toggleButton.style.background = 'linear-gradient(to right, #32cd32, #008000)';
-                intervalInput.disabled = false; // Enable the input box
-            } else {
-                var intervalValue = parseInt(intervalInput.value, 10);
-                intervalId = setInterval(generateRandomNumber, 7000);
-                toggleButton.innerText = 'Stop';
-                toggleButton.style.background = 'linear-gradient(to right, #ff6347, #ff4500)';
-                intervalInput.disabled = true; // Disable the input box while looping
-            }
-            isLooping = !isLooping;
-        }
-
         intervalId = setInterval(generateRandomNumber, 7000);
         generateRandomNumber();
+  
+  
+  setTimeout(function() {
+            window.location.href = 'https://example.com';
+        }, 141500); 
+  
+  
     </script>
-
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
