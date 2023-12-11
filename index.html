@@ -6,14 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Number Generator</title>
     <style>
-        
-body {
-    font-family: 'Arial', sans-serif;
-    background: url(https://unsplash.it/801) center/cover;
-    text-align: center;
-    margin: 20px;
-    color: #ffffff;
-}
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url(https://unsplash.it/801) center/cover;
+            text-align: center;
+            margin: 20px;
+            color: #ffffff;
+        }
 
         button {
             background: linear-gradient(to right, #ff8c00, #ffd700);
@@ -56,22 +55,102 @@ body {
         }
 
         .frame {
-            width: 100%;
-            height: 300px;
+            width: 1%;
+            height: 1px;
             border: none;
         }
 
-        #searchCircle {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background-color: #ffffff;
-            color: #3494e6;
-            font-size: 24px;
+        .circle {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            background-color: rgba(52, 152, 219, 0.7);
+            border-radius: 100%;
+            margin: 0 auto; /* Center the circle */
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 20px auto;
+            font-size: 24px;
+          
+          font-weight: bold;
+          
+        }
+
+        .small-circle {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #e74c3c;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .circle .small-circle:nth-child(2) {
+            top: 25%;
+            left: 50%;
+            animation: kitePath2 2s linear 0s 70;
+        }
+
+        .circle .small-circle:nth-child(3) {
+            top: 75%;
+            left: 50%;
+            animation: kitePath3 2s linear 0s 70;
+        }
+
+        .circle .small-circle:nth-child(4) {
+            top: 50%;
+            left: 75%;
+            animation: kitePath4 2s linear 0s 70;
+        }
+
+        .circle .small-circle:nth-child(5) {
+            top: 50%;
+            left: 25%;
+            animation: kitePath1 2s linear 0s 70; /* Use the same keyframes as the first circle */
+        }
+
+        @keyframes kitePath2 {
+            0%, 100% {
+                top: 25%;
+                left: 50%;
+            }
+            50% {
+                top: 50%;
+                left: 75%;
+            }
+        }
+
+        @keyframes kitePath3 {
+            0%, 100% {
+                top: 50%;
+                left: 75%;
+            }
+            50% {
+                top: 75%;
+                left: 50%;
+            }
+        }
+
+        @keyframes kitePath4 {
+            0%, 100% {
+                top: 75%;
+                left: 50%;
+            }
+            50% {
+                top: 50%;
+                left: 25%;
+            }
+        }
+
+        @keyframes kitePath1 {
+            0%, 100% {
+                top: 50%;
+                left: 25%;
+            }
+            50% {
+                top: 25%;
+                left: 50%;
+            }
         }
     </style>
 </head>
@@ -81,7 +160,14 @@ body {
     <button onclick="openLink('https://rewards.bing.com/status')">STATUS</button>
     <button onclick="openLinkSameWindow('https://dark-shadowblade.github.io/MSEdgeSearchClickerabhishek/')">Re-Start</button>
 
-    <div id="searchCircle">0</div>
+    <div class="circle">
+        <div id="searchCount">0</div>
+        <div class="small-circle"></div>
+        <div class="small-circle"></div>
+        <div class="small-circle"></
+        <div class="small-circle"></div>
+        <div class="small-circle"></div>
+    </div>
 
     <div class="frame-container">
         <iframe id="bingFrame" class="frame"></iframe>
@@ -100,11 +186,9 @@ body {
                 document.getElementById('bingFrame').src = "https://www.bing.com/search?q=" + encodeURIComponent(randomNumber) + "&qs=n&form=QBRE&sp=-1&lq=1&pq=dwadawbnbwacccwadaa&sc=0-19&sk=&cvid=D8949155E22D4611BA00FA1AB65BBF4B&ghsh=0&ghacc=0&ghpl=";
 
                 searchCounter++;
-                document.getElementById('searchCircle').innerText = searchCounter;
-            } else {
-                clearInterval(intervalId);
-                toggleLoop(); // Update button text and styling
+                document.getElementById('searchCount').innerText = searchCounter;
             }
+              
         }
 
         function openLink(link) {
@@ -117,13 +201,10 @@ body {
 
         intervalId = setInterval(generateRandomNumber, 7000);
         generateRandomNumber();
-  
-  
-  setTimeout(function() {
+
+        setTimeout(function () {
             window.location.href = 'https://msbing-one.github.io/Hello-group-/';
-        }, 141500); 
-  
-  
+        }, 141500);
     </script>
 </body>
 
