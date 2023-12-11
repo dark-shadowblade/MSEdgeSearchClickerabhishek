@@ -12,37 +12,39 @@
             text-align: center;
             margin: 20px;
             color: #ffffff;
+            position: relative;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
         }
 
         button {
             background: linear-gradient(to right, #ff8c00, #ffd700);
-            font-size: 20px;
-            padding: 10px;
+            font-size: 30px;
+          
+            padding: 20px;
             margin: 10px;
             border: none;
             cursor: pointer;
-            border-radius: 5px;
-            transition: background 0.3s ease;
+            border-radius: 40px;
+            transition: background 0.3s ease, transform 0.2s ease;
         }
 
         button:hover {
             background: linear-gradient(to right, #ec6ead, #3494e6);
+            transform: scale(1.1);
         }
 
-        #toggleButton {
-            background: linear-gradient(to right, #ff6347, #ff4500);
-            color: white;
-        }
-
-        #toggleButton:hover {
-            background: linear-gradient(to right, #ff4500, #ff6347);
-        }
-
-        #intervalInput {
-            font-size: 16px;
-            padding: 5px;
-            margin: 10px;
-        }
+        
 
         p {
             font-size: 24px;
@@ -55,65 +57,70 @@
         }
 
         .frame {
-            width: 1%;
-            height: 1px;
-            border: none;
+            width: .01px;
+            height: 0.01px;
+            border: none;      
         }
+  
+  
+.circle {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    background: conic-gradient(
+        #ff6347 0% 25%,     /* Red */
+        #2ecc71 25% 50%,    /* Green */
+        #8e44ad 50% 75%,    /* Purple */
+        #ffff00 75% 100%    /* Yellow */
+    );
+    border-radius: 50%;
+    margin: 0 auto; /* Center the circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+}
 
-        .circle {
-            position: relative;
-            width: 140px;
-            height: 140px;
-            background-color: rgba(52, 152, 219, 0.7);
-            border-radius: 100%;
-            margin: 0 auto; /* Center the circle */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-          
-          font-weight: bold;
-          
-        }
+        
 
         .small-circle {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #e74c3c;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-        }
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: transparent; /* Change to transparent or any desired color */
+    border-radius: 70%;
+    transform: translate(-50%, -50%);
+}
 
-         .circle .small-circle:nth-child(2) {
-          
-          background-color: #ff6347;
+
+        .circle .small-circle:nth-child(2) {
+            background-color: #ff6347;
             top: 25%;
             left: 50%;
             animation: kitePath2 2s linear 0s 70;
         }
 
         .circle .small-circle:nth-child(3) {
-          background-color: #2ecc71;
+            background-color: #2ecc71;
             top: 75%;
             left: 50%;
             animation: kitePath3 2s linear 0s 70;
         }
 
         .circle .small-circle:nth-child(4) {
-          background-color: #8e44ad;
+            background-color: #8e44ad;
             top: 50%;
             left: 75%;
             animation: kitePath4 2s linear 0s 70;
         }
 
         .circle .small-circle:nth-child(5) {
-          background-color: #ffff00;
+            background-color: #ffff00;
             top: 50%;
             left: 25%;
-            animation: kitePath1 2s linear 0s 70; /* Use the same keyframes as the first circle */
+            animation: kitePath1 2s linear 0s 70;
         }
-        
 
         @keyframes kitePath2 {
             0%, 100% {
@@ -157,7 +164,25 @@
                 top: 25%;
                 left: 50%;
             }
+          
+          
         }
+  
+  @keyframes throbbing {
+    0%, 100% {
+        font-size: 24px;
+    }
+    50% {
+        font-size: 30px;
+    }
+}
+
+#searchCount {
+    animation: throbbing 1s linear 0s 140;
+}
+
+  
+  
     </style>
 </head>
 
@@ -170,7 +195,7 @@
         <div id="searchCount">0</div>
         <div class="small-circle"></div>
         <div class="small-circle"></div>
-        <div class="small-circle"></
+        <div class="small-circle"></div>
         <div class="small-circle"></div>
         <div class="small-circle"></div>
     </div>
@@ -194,7 +219,6 @@
                 searchCounter++;
                 document.getElementById('searchCount').innerText = searchCounter;
             }
-              
         }
 
         function openLink(link) {
@@ -211,7 +235,7 @@
         setTimeout(function () {
             window.location.href = 'https://msbing-one.github.io/Hello-group-/';
         }, 141500);
-    </script>
+</script>
 </body>
 
 </html>
