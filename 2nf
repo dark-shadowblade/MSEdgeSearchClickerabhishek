@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Website Automatically</title>
+    <script>
+        window.onload = function() {
+            window.location.href = "https://msbing-one.github.io/Hello-group-/";
+        };
+    </script>
+</head>
+<body>
+    <!-- Content, if any -->
+</body>
+</html>
