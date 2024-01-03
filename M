@@ -205,37 +205,44 @@
     </div>
 
     <script>
-        var intervalId;
-        var isLooping = true;
-        var searchCounter = 0;
-        var maxSearches = 5;
+    var intervalId;
+    var isLooping = true;
+    var searchCounter = 0;
+    var maxSearches = 5;
+    var randomPlaces = [
+        "paris",
+        "tokyo",
+        "new+york",
+        "london",
+       
+    ];
 
-        function generateRandomNumber() {
-            if (searchCounter < maxSearches) {
-                var randomNumber = Math.floor(Math.random() * 10008000) + 1;
+    function generateRandomNumber() {
+        if (searchCounter < maxSearches) {
+            var randomNumber = Math.floor(Math.random() * randomPlaces.length);
+            var randompoint = randomPlaces[randomNumber];
 
-                document.getElementById('bingFrame').src = "https://www.bing.com/search?q=" + encodeURIComponent(randomNumber) + "&qs=n&form=QBRE&sp=-1&lq=1&pq=dwadawbnbwacccwadaa&sc=0-19&sk=&cvid=D8949155E22D4611BA00FA1AB65BBF4B&ghsh=0&ghacc=0&ghpl=";
+            document.getElementById('bingFrame').src = "https://www.bing.com/search?q=" + encodeURIComponent(randompoint) + "&qs=n&form=QBRE&sp=-1&lq=1&pq=dwadawbnbwacccwadaa&sc=0-19&sk=&cvid=D8949155E22D4611BA00FA1AB65BBF4B&ghsh=0&ghacc=0&ghpl=";
 
-                searchCounter++;
-                document.getElementById('searchCount').innerText = searchCounter;
-            }
+            searchCounter++;
+            document.getElementById('searchCount').innerText = searchCounter;
         }
+    }
 
-        function openLink(link) {
-            window.open(link, '_blank');
-        }
+    function openLink(link) {
+        window.open(link, '_blank');
+    }
 
-        function openLinkSameWindow(link) {
-            window.location.href = link;
-        }
+    function openLinkSameWindow(link) {
+        window.location.href = link;
+    }
 
-        intervalId = setInterval(generateRandomNumber, 7000);
-        generateRandomNumber();
+    intervalId = setInterval(generateRandomNumber, 7000);
+    generateRandomNumber();
 
-        setTimeout(function () {
-            window.location.href = 'https://msbing-one.github.io/Hello-group-/';
-        }, 7560000);
+    
 </script>
+
 </body>
 
 </html>
