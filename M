@@ -208,7 +208,7 @@
         var intervalId;
         var isLooping = true;
         var searchCounter = 0;
-        var maxSearches = 21;
+        var maxSearches = 5;
 
         function generateRandomNumber() {
             if (searchCounter < maxSearches) {
