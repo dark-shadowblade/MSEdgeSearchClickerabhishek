@@ -189,7 +189,7 @@
 <body>
     <button onclick="openLink('https://rewards.bing.com')">REWARDS</button>
     <button onclick="openLink('https://rewards.bing.com/status')">STATUS</button>
-    <button onclick="openLinkSameWindow('https://dark-shadowblade.github.io/MSEdgeSearchClickerabhishek/')">Re-Start</button>
+    <button onclick="openLinkSameWindow('https://dark-shadowblade.github.io/Abishek2512-ms-reward/ ')">NEW</button>
 
     <div class="circle">
         <div id="searchCount">0</div>
@@ -378,7 +378,13 @@
             var randomNumber = Math.floor(Math.random() * randomPlaces.length);
             var randompoint = randomPlaces[randomNumber];
 
-            document.getElementById('bingFrame').src = "https://www.bing.com/search?q=" + encodeURIComponent(randompoint) + "&qs=n&form=QBRE&sp=-1&lq=1&pq=dwadawbnbwacccwadaa&sc=0-19&sk=&cvid=D8949155E22D4611BA00FA1AB65BBF4B&ghsh=0&ghacc=0&ghpl=";
+           var rn =Math.floor(Math.random() * randomPlaces.length);
+           var rp = randomPlaces[rn];
+          
+          var rn2 =Math.floor(Math.random() * randomPlaces.length);
+           var rp2 = randomPlaces[rn2];
+          
+            document.getElementById('bingFrame').src = "https://www.bing.com/search?q=" + encodeURIComponent(randompoint) +  " " +encodeURIComponent(rp) +" "+ encodeURIComponent(rp2)+ "&qs=n&form=QBRE&sp=-1&lq=1&pq=dwadawbnbwacccwadaa&sc=0-19&sk=&cvid=D8949155E22D4611BA00FA1AB65BBF4B&ghsh=0&ghacc=0&ghpl=";
 
             searchCounter++;
             document.getElementById('searchCount').innerText = searchCounter;
